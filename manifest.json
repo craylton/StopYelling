@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "StopYelling",
-    "version": "1.0",
+    "version": "1.1",
 
     "description": "Converts obnoxious UPPERCASE stream titles to sentence-case.",
 
@@ -11,8 +11,8 @@
 
     "content_scripts": [
         {
-            "matches": ["*://*.twitch.tv/*"],
-            "js": ["stopYelling.js"]
+            "matches": ["*://*.twitch.tv/*", "*://*.youtube.com/*"],
+            "js": ["stopYelling.js", "twitch.js", "youtube.js"]
         }
     ]
 }
