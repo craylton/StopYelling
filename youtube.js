@@ -2,35 +2,23 @@ const thumbnailSelector = 'a#video-title';
 const recommendedVideoSelector = 'span#video-title';
 const belowVideoSelector = '#super-title + h1 yt-formatted-string';
 
-const updateYoutubeTitles = () => {
-    const titleElements = document.querySelectorAll(thumbnailSelector);
-    for (const titleElement of titleElements) {
-        const title = titleElement.text;
-        if (isObnoxious(title)) {
-            titleElement.text = toSentenceCase(title);
-        }
-    }
-};
+const updateYoutubeTitles = () =>
+    updateTitles(
+        thumbnailSelector,
+        element => element.text,
+        (element, newTitle) => element.text = newTitle);
 
-const updateRecommendedYoutubeTitles = () => {
-    const titleElements = document.querySelectorAll(recommendedVideoSelector);
-    for (const titleElement of titleElements) {
-        const title = titleElement.title;
-        if (isObnoxious(title)) {
-            titleElement.textContent = toSentenceCase(title);
-        }
-    }
-};
+const updateRecommendedYoutubeTitles = () =>
+    updateTitles(
+        recommendedVideoSelector,
+        element => element.title,
+        (element, newTitle) => element.textContent = newTitle);
 
-const updateYoutubeBelowVideoTitle = () => {
-    const titleElements = document.querySelectorAll(belowVideoSelector);
-    for (const titleElement of titleElements) {
-        const title = titleElement.innerHTML;
-        if (isObnoxious(title)) {
-            titleElement.innerHTML = toSentenceCase(title);
-        }
-    }
-};
+const updateYoutubeBelowVideoTitle = () =>
+    updateTitles(
+        belowVideoSelector,
+        element => element.innerHTML,
+        (element, newTitle) => element.innerHTML = newTitle);
 
 setInterval(updateYoutubeTitles, 1000);
 setInterval(updateRecommendedYoutubeTitles, 1000);
