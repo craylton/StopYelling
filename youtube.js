@@ -17,8 +17,8 @@ const updateRecommendedYoutubeTitles = () =>
 const updateYoutubeBelowVideoTitle = () =>
     updateTitles(
         belowVideoSelector,
-        element => element.innerHTML,
-        (element, newTitle) => element.innerHTML = newTitle);
+        element => element.textContent,
+        (element, newTitle) => element.textContent = newTitle);
 
 setInterval(updateYoutubeTitles, 1000);
 setInterval(updateRecommendedYoutubeTitles, 1000);
