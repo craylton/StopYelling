@@ -7,7 +7,7 @@ const allTitlesSelector = `${followingSelector}, ${recommendedSelector}, ${conti
 const updateTwitchTitles = () =>
     updateTitles(
         allTitlesSelector,
-        element => element.title,
+        element => element.textContent,
         (element, newTitle) => element.textContent = newTitle);
 
 setInterval(updateTwitchTitles, 1000);
