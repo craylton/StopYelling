@@ -36,7 +36,7 @@ npm run zip
 This creates `dist/StopYelling.zip` suitable for Web Store / AMO uploads (still subject to signing requirements on AMO).
 
 ### Notes
-* Manifest v2 is still used here; Mozilla is deprecating MV2 eventually—migrating to Manifest v3 will be a future task.
+* Uses Manifest v3.
 * If selectors on Twitch/YouTube change, update the query selectors in `twitch.js` / `youtube.js` accordingly.
 * Consider throttling or using MutationObserver instead of `setInterval` if performance becomes an issue.
 
