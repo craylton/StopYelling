@@ -1,0 +1,37 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Firefox: Debug StopYelling (Persistent Dev Profile)",
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      "addonPath": "${workspaceFolder}",
+      "profileDir": "${workspaceFolder}/.firefox-profile",
+      "keepProfileChanges": true,
+      "reloadOnChange": {
+        "watch": [
+          "manifest.json",
+          "stopYelling.js",
+          "twitch.js",
+          "youtube.js"
+        ]
+      }
+    },
+    {
+      "name": "Firefox: Debug StopYelling (Ephemeral)",
+      "type": "firefox",
+      "request": "launch",
+      "reAttach": true,
+      "addonPath": "${workspaceFolder}",
+      "reloadOnChange": {
+        "watch": [
+          "manifest.json",
+          "stopYelling.js",
+          "twitch.js",
+          "youtube.js"
+        ]
+      }
+    }
+  ]
+}
