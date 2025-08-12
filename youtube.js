@@ -7,11 +7,19 @@ const updateThumbnailAndRecommendedVideoTitles = () =>
         element => element.textContent,
         (element, newTitle) => element.textContent = newTitle);
 
-const updateYoutubeBelowVideoTitle = () =>
+function updateYoutubeBelowVideoTitle() {
     updateTitles(
         belowVideoSelector,
-        element => element.textContent,
-        (element, newTitle) => element.textContent = newTitle);
+        el => el.textContent,
+        (el, newTitle) => el.textContent = newTitle
+    );
+}
 
-setInterval(updateThumbnailAndRecommendedVideoTitles, 1000);
-setInterval(updateYoutubeBelowVideoTitle, 1000);
+function updateAllYoutubeTitles() {
+    updateThumbnailAndRecommendedVideoTitles();
+    updateYoutubeBelowVideoTitle();
+}
+
+ensureBody(() => {
+    observeDom(updateAllYoutubeTitles);
+});

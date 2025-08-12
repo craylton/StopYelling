@@ -12,7 +12,7 @@
     "content_scripts": [
         {
             "matches": ["*://*.twitch.tv/*", "*://*.youtube.com/*"],
-            "js": ["stopYelling.js", "twitch.js", "youtube.js"]
+            "js": ["domObserverUtil.js", "stopYelling.js", "twitch.js", "youtube.js"]
         }
     ]
 }
