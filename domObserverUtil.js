@@ -1,6 +1,4 @@
 // Lightweight shared DOM utilities injected first (see manifest order).
-// Provides two globals: ensureBody(cb) and observeDom(callback[, options]).
-// keep it tiny & readable.
 (function() {
     function ensureBody(cb) {
         if (document.readyState === 'loading') {

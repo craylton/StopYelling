@@ -7,13 +7,11 @@ const updateThumbnailAndRecommendedVideoTitles = () =>
         element => element.textContent,
         (element, newTitle) => element.textContent = newTitle);
 
-function updateYoutubeBelowVideoTitle() {
+const updateYoutubeBelowVideoTitle = () =>
     updateTitles(
         belowVideoSelector,
-        el => el.textContent,
-        (el, newTitle) => el.textContent = newTitle
-    );
-}
+        element => element.textContent,
+        (element, newTitle) => element.textContent = newTitle);
 
 function updateAllYoutubeTitles() {
     updateThumbnailAndRecommendedVideoTitles();

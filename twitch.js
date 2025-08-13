@@ -13,13 +13,11 @@ const allTitlesSelector = [
     belowStreamSelectorV2
 ].join(', ');
 
-function updateTwitchTitles() {
+const updateTwitchTitles = () =>
     updateTitles(
         allTitlesSelector,
-        el => el.textContent,
-        (el, newTitle) => el.textContent = newTitle
-    );
-}
+        element => element.textContent,
+        (element, newTitle) => element.textContent = newTitle);
 
 ensureBody(() => {
     observeDom(updateTwitchTitles);
