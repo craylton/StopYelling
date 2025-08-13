@@ -4,6 +4,10 @@
   "version": "1.4.0",
   "description": "Converts obnoxious UPPERCASE stream/video titles to sentence-case (Firefox extension)",
   "scripts": {
-    "zip": "powershell -NoProfile -ExecutionPolicy Bypass -Command Compress-Archive -Force -Path manifest.json,stopYelling.js,twitch.js,youtube.js,icons -DestinationPath dist/StopYelling.zip"
+    "build": "web-ext build --overwrite-dest --artifacts-dir dist",
+    "lint": "web-ext lint"
+  },
+  "devDependencies": {
+    "web-ext": "^8.0.0"
   }
 }
