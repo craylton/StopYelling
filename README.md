@@ -1,43 +1,40 @@
 # StopYelling
 
-A Firefox extension which converts obnoxious UPPERCASE stream/video titles to sentence-case.
+Firefox extension that converts shouty UPPERCASE Twitch & YouTube titles to readable sentence case.
 
-Install from: https://addons.mozilla.org/en-GB/firefox/addon/stopyelling/
+Install: https://addons.mozilla.org/en-GB/firefox/addon/stopyelling/
 
-## Local Development / Testing
+## Use
+Just browse Twitch or YouTube – titles that are mostly uppercase will be softened automatically.
 
-You can load the extension temporarily in Firefox to test code changes.
+For example: 'OMG CHECK OUT THIS AMAZING VIDEO' gets changed into 'Omg check out this amazing video'
 
-### Quick Manual Load
-1. Open `about:debugging#/runtime/this-firefox` in Firefox.
-2. Click "Load Temporary Add-on".
-3. Select this project's `manifest.json`.
-4. Open a Twitch or YouTube page and watch uppercase titles convert automatically within ~1 second.
+## Develop / Test
+Temporary load:
+1. Firefox: open `about:debugging#/runtime/this-firefox`.
+2. Click "Load Temporary Add-on" and pick `manifest.json`.
 
-### VS Code Debugging
-This repo includes a `.vscode/launch.json` with a configuration:
-1. Install the recommended extension: `Firefox Debug` (see prompt to install or install manually: `firefox-devtools.vscode-firefox-debug`).
-2. Go to Run & Debug panel and choose: `Firefox: Debug StopYelling (Temporary Add-on)`.
-3. Press F5. A Firefox instance launches with the add-on loaded.
-4. Set breakpoints in the content script files (`stopYelling.js`, `twitch.js`, `youtube.js`).
+Or debug in VS Code (after installing the `firefox-devtools.vscode-firefox-debug` extension):
+1. Run & Debug panel.
+2. Choose either:
+	* `Firefox: Debug StopYelling (Persistent Dev Profile)`
+	* `Firefox: Debug StopYelling (Ephemeral)`
+3. Press F5. Edit content scripts; they auto‑reload.
 
-### Developing Content Scripts
-The scripts run every second to find title elements and convert them if they appear to be "yelling" ( >30% uppercase in first 20 chars ).
-
-Edit files and the debugger's auto-reload (from `reloadOnChange`) will refresh the extension.
-
-### Packaging (Local Zip)
-From the project root run:
-
+## Scripts
 ```powershell
-npm run zip
+npm install          # first time
+npm run lint         # validate
+npm run build        # produce dist/*.zip
 ```
 
-This creates `dist/StopYelling.zip` suitable for Web Store / AMO uploads (still subject to signing requirements on AMO).
+## Packaging
+`npm run build` creates a ZIP in `dist/` ready for AMO upload (you still need Mozilla signing).
 
-### Notes
-* Uses Manifest v3.
-* If selectors on Twitch/YouTube change, update the query selectors in `twitch.js` / `youtube.js` accordingly.
-* Consider throttling or using MutationObserver instead of `setInterval` if performance becomes an issue.
+## Releasing
+Update the version in both `manifest.json` and `package.json`, then run the build.
+
+## Notes
+Manifest v3. If site markup changes, update selectors in `twitch.js` / `youtube.js`.
 
 Enjoy quieter titles!
